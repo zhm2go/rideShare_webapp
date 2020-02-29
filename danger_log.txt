@@ -1,0 +1,29 @@
+ERSS hwk1 
+Xianghui Liu and Haimeng Zhang
+xl310 and hz202
+
+To start with, user could sign up account without verifying their email address and logging into the system without human-machine verification, 
+leading to the following potential hazards:
+(1)	A malicious user could pretend to be someone else and register account using other people’s email.
+(2)	A malicious user could create a large amount of zombie accounts to occupy system’s memory and affect system operation speed. 
+(3)	Since there is no human-machine verification, a malicious user could use machine to fake human and log into the system.
+(4)	User can submit wrong email address without noticing. As a consequence, he/she may not be able to receive confirmation email.
+
+Next, there is no privilege division between system users. This is especially vulnerable when using GET method to submit message to the sever.
+ This is because a malicious user could elaborate the GET URL and try to access information belongs to other users. In this assignment, a logged-in 
+user may use this kind of method and guess the Ride class instance’s primary key and combine the valid primary key into the URL to get information
+ about another user’s ride without needing to join the ride.
+
+The website is not support for resetting the password. This may cause great inconvenience if a user forgets his/her password. 
+
+The sharer could join a share, and then the owner may modify or delete the order. It is tricky here. The ride owner could modify the destination, 
+the arrival time or even whether this ride is sharable. If any of these is not in accord with the sharer’s need, he/she may need to select another 
+open ride. To make it simple, we implement the following policy: once the owner modifies the order, the sharer will be dropped out immediately, 
+unless the order is confirmed. The passenger number will be the sum of passengers from ride owner and all other sharers.
+
+When filtering matched order by the driver's and orders' special information, we cannot just filter by special=driver's special. Users who do not have special information should also be added to the search result. 
+
+
+
+
+

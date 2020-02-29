@@ -1,0 +1,104 @@
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <link rel = "stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
+{#    <title>RiderShare</title>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container">#}
+{#    <h2>RiderShare</h2>#}
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            {% if user.is_authenticated %}#}
+{#                {{ user.username }}#}
+{#            {% else %}#}
+{#                <a href="{% url 'login' %}">Sign In</a>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            My Account#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            <a href="{% url 'logout' %}">Log out</a>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            <a href="{% url 'new_ride' %}">Call a Vehicle</a>#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            <a href="{% url 'new_driver' %}">Become a Driver</a>#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            <a href="{% url 'new_share' %}">Search Open Ride</a>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            <a href="{% url 'ride_requested' %}">All your rides</a>#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            <a href="{% url 'share_requested' %}">All your share other's ride</a>#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            <a href="{% url 'driver_info' %}">Driver info</a>#}
+{#        </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            <a href="{% url 'driver_search' %}">Take an Order (Driver)</a>#}
+{#        </div>#}
+{#        <div class="col">#}
+{#            <a href="{% url 'check_confiremed_ride' %}"> Check Confirmed Ride (Driver)</a>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="bd-title" id="content">User Guide</h1><br>
+    <h5><span class="bd-content-title">1 Create Account<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Click 'Sign Up' at the upper right corner.</p>
+    <h5><span class="bd-content-title">2 Login<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Click 'Log in' at the upper right corner.</p>
+    <h5><span class="bd-content-title">3 Login Failure<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Invalid user name or password will not be able to log into system.</p>
+    <h5><span class="bd-content-title">4 Logout<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>After login, click on the dropdown menu at the upper right corner, then click 'Log out'.</p>
+    <h5><span class="bd-content-title">5 Register driver<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Click on 'Become a Driver' in the navigation bar.</p>
+    <h5><span class="bd-content-title">6 Edit driver & personal information<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>After becoming a driver, click 'Driver Info' in the navigation bar, then click edit or 'no longer be a driver' to modify driver information.</p>
+    <p>To change user information, click on the dropdown menu at the upper right corner, then click 'My account'.</p>
+    <h5><span class="bd-content-title">7 Ride request<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Click on the 'Call a Ride' in the navigation bar.</p>
+    <h5><span class="bd-content-title">8 View non-complete rides<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>click on the dropdown menu at the upper right corner, then click 'All my called rides'.</p>
+    <h5><span class="bd-content-title">9 Edit open ride<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Follow the step as 8, then click 'edit' or 'delete' in the rightmost column.</p>
+    <h5><span class="bd-content-title">10 Edit attributes<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Follow the steps as 9.</p>
+    <h5><span class="bd-content-title">11 View ride details<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Follow the step as 8, if other people share the ride, click on 'ckeck here for share details' to view sharer's information. If a driver confirmed the ride, click on 'driver details' for driver information.</p>
+    <h5><span class="bd-content-title">12 View all ride details<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Follow the steps as 11.</p>
+    <h5><span class="bd-content-title">13 Search open ride<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Click on 'Share other's ride' in the navigation bar, then fill the form. The system will show all your request of sharing other's ride. Select the share request you want to process, click on 'search open rides'</p>
+    <h5><span class="bd-content-title">14 Join a ride<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Follow the steps as 13, click on 'join the ride'.</p>
+    <h5><span class="bd-content-title">15 Driver searches requests<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>User must register to be a driver first. Then click on the 'Confirm an Order' in the navigation bar.</p>
+    <h5><span class="bd-content-title">16 Confirm requests<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Follow the step as 15, then click on 'confirm'.</p>
+    <h5><span class="bd-content-title">17 Send email<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>After driver confirmed, system will automatically send the email.</p>
+    <h5><span class="bd-content-title">18 List of confirmed ride<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Click on the 'Complete an order' in the navigation bar. </p>
+    <h5><span class="bd-content-title">19 Confirmed ride details<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Follow the step as 18. If the ride is shared, click on 'check here for details' to view shared information. </p>
+    <h5><span class="bd-content-title">20 Complete the ride<a class="anchorjs-link " aria-label="Anchor"style="padding-left: 0.375em;"></a></span></h5>
+    <p>Follow the step as 18. Click on 'complete' to finish the ride.</p>
+{% endblock %}

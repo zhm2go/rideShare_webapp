@@ -1,0 +1,30 @@
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <link rel = "stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
+{#    <script type='text/javascript' src="{% static 'js/jquery-3.4.1.min.js' %}"></script>#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container">#}
+{#    <h2>Become a driver</h2>#}
+{#    <form method="post" enctype="multipart/form-data" novalidate>#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <button type="submit" class="btn btn-primary">Finish</button>#}
+{#    </form>#}
+{#</div>#}
+{#</body>#}
+{% extends 'base.html' %}
+{% block content %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Driver Registration</li>
+    </ol>
+    <form method="post" enctype="multipart/form-data" novalidate action="{% url 'new_driver' %}">
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+{% endblock %}

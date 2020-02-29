@@ -1,0 +1,28 @@
+.bd-navbar {
+    min-height: 4rem;
+    background-color: #563d7c;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+.btn-outline-secondary {
+    color: #eff1f3;
+    border-color: #d6e0e8;
+}
+
+.main-body {
+    position: relative;
+    padding: 3rem 15px;
+}
+
+.bd-title {
+    font-size: calc(1.425rem + 2.1vw);
+}
+
+.bd-content>h5 {
+    margin-top: 1.5rem;
+}
+
+.bd-content-title {
+    display: block;
+    pointer-events: auto;
+}

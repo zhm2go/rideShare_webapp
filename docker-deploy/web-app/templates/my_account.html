@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{user.username}}</h4>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{user.email}}
+                            <br />
+                            <i class="glyphicon glyphicon-envelope"></i>Last Login: {{user.last_login}}
+                            <br/>
+                            <i class="glyphicon glyphicon-gift"></i>Join since: {{ user.date_joined }}</p>
+                        <!-- Split button -->
+                        <div class="btn-group">
+                            <a href="{% url 'edit_email' %}">
+                                <button type="button" class="btn btn-primary">
+                                    Edit email address</button>
+                            </a>
+{#                            <span>&nbsp &nbsp</span>#}
+{#                            <a href="#">#}
+{#                                <button type="button" class="btn btn-danger">#}
+{#                                    Change password</button>#}
+{#                            </a>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}

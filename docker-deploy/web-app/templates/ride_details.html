@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <h3>Ride Details</h3>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>Rider Owner</th>
+                <th>Destination</th>
+                <th>Arrival Time</th>
+                <th>Total Number of Passengers</th>
+                <th>Special Requirement</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ ride.caller.username }}</td>
+                <td>{{ ride.destination }}</td>
+                <td>{{ ride.arrivalTime }}</td>
+                <td>
+                    {{ ride.totalNum }}<br>
+                    <div class="small">Including {{ other }} passengers from the ride owner and other sharers.</div>
+                </td>
+                <td>{{ ride.special|default:"Owner doesn't have any special requirement." }}</td>
+                <td>
+                    {% if ride.isComfirmed %}
+                        <span>The driver is on the way.</span>
+                    {% else %}
+                        <span>Waiting for drivers.</span>
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'home' %}">Back to home</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+     <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Driver information</li>
+    </ol>
+<table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th class="text-center">Driver name</th>
+                <th class="text-center">Vehicle type</th>
+                <th class="text-center">Max Number of Passengers</th>
+                <th class="text-center">Plate number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">{{ driver.duser.username }}</td>
+                <td class="text-center">{{ driver.vehicletype }}</td>
+                <td class="text-center">{{ driver.maxPassengers}}</td>
+                <td class="text-center">{{ driver.plate }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

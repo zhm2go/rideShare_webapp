@@ -1,0 +1,104 @@
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#    <link rel = "stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
+{#</head>#}
+{#<body>#}
+{#<h1>Ride Search</h1>#}
+{#<div class="container">#}
+{#    <h3>Select a ride</h3>#}
+{#    <table class="table table-striped">#}
+{#        <thead class="thead-light">#}
+{#            <tr>#}
+{#                <th>Caller</th>#}
+{#                <th>Destination</th>#}
+{#                <th>Arrival Time</th>#}
+{#                <th>Total Number of Passengers</th>#}
+{#                <th>Special Requirement</th>#}
+{#                <th>Share Information</th>#}
+{#                <th>Operation</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            {% for ride in ride_list %}#}
+{#            <tr>#}
+{#                <td>{{ ride.caller }}</td>#}
+{#                <td>{{ ride.destination }}</td>#}
+{#                <td>{{ ride.arrivalTime }}</td>#}
+{#                <td>{{ ride.totalNum }}</td>#}
+{#                <td>{{ ride.special|default:"Rider owner doesn't have any special requirement." }}</td>#}
+{#                <td>#}
+{#                    {% if ride.isShare %}#}
+{#                            This ride is allowed to be shared.<br>#}
+{#                            {% if ride.toshare.all %}#}
+{#                                <a href="{% url 'share_details' ride.pk %}">Check here for share details.</a>#}
+{#                            {% else %}#}
+{#                                No one shares this ride now.#}
+{#                            {% endif %}#}
+{#                        {% else %}#}
+{#                        <span>Your ride is not sharable.</span>#}
+{#                    {% endif %}#}
+{#                </td>#}
+{#                <td>#}
+{#                    <a href="{% url 'driver_confirm' ride.pk %}">Confirm this request</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#            {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            <a href="{% url 'home' %}">Back to home</a>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{% extends 'base.html' %}
+{% block content %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Orders you can take</li>
+    </ol>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th class="text-center">Caller</th>
+                <th class="text-center">Destination</th>
+                <th class="text-center">Arrival Time</th>
+                <th class="text-center">Total Number of Passengers</th>
+                <th class="text-center">Special Requirement</th>
+                <th class="text-center">Share Information</th>
+                <th class="text-center">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ride in ride_list %}
+            <tr>
+                <td class="text-center">{{ ride.caller }}</td>
+                <td class="text-center">{{ ride.destination }}</td>
+                <td class="text-center">{{ ride.arrivalTime }}</td>
+                <td class="text-center">{{ ride.totalNum }}</td>
+                <td class="text-center">{{ ride.special|default:"Rider owner doesn't have any special requirement." }}</td>
+                <td class="text-center">
+                    {% if ride.isShare %}
+                            This ride is sharable.<br>
+                            {% if ride.toshare.all %}
+                                <a href="{% url 'share_details' ride.pk %}">Check here for share details.</a>
+                            {% else %}
+                                No one shares this ride now.
+                            {% endif %}
+                        {% else %}
+                        <span>Your ride is not sharable.</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'driver_confirm' ride.pk %}"><i class="fa fa-check-circle"></i>Confirm</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

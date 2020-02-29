@@ -1,0 +1,75 @@
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#    <link rel = "stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
+{#</head>#}
+{#<body>#}
+{#<div class="container">#}
+{#    <table class="table">#}
+{#        <h3>Driver information</h3>#}
+{#        <thead class="thead-light">#}
+{#            <tr>#}
+{#                <th>Vehicle Type</th>#}
+{#                <th>Plate</th>#}
+{#                <th>Max Passengers</th>#}
+{#                <th>Special Infomation</th>#}
+{#                <th>Operation</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            <tr>#}
+{#                <td>{{ user.driver.vehicletype }}</td>#}
+{#                <td>{{ user.driver.plate }}</td>#}
+{#                <td>{{ user.driver.maxPassengers }}</td>#}
+{#                <td>{{ user.driver.special|default:"You don't have any special Information." }}</td>#}
+{#                <td>#}
+{#                    <a href="{% url 'modify_driver' %}">Edit</a><br>#}
+{#                    <a href="{% url 'delete_drive' %}">No loner want to be driver</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        </tbody>#}
+{#    </table>#}
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            <a href="{% url 'home' %}">Back to home</a>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{% extends 'base.html' %}
+{% block content %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Your registration information</li>
+    </ol>
+<table class="table table-striped>"
+            <thead class="thead-light">
+            <tr>
+                <th class="text-center">Vehicle Type</th>
+                <th class="text-center">Plate</th>
+                <th class="text-center">Max Passengers</th>
+                <th class="text-center">Special Infomation</th>
+                <th class="text-center">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center">{{ user.driver.vehicletype }}</td>
+                <td class="text-center">{{ user.driver.plate }}</td>
+                <td class="text-center">{{ user.driver.maxPassengers }}</td>
+                <td class="text-center">{{ user.driver.special|default:"You don't have any special Information." }}</td>
+                <td class="text-center">
+                    <a href="{% url 'modify_driver' %}"><i class="fa fa-edit"></i>Edit</a><br>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="btn-group">
+        <a href="{% url 'delete_drive' %}">
+            <button class="btn btn-danger" type="button">No longer be a driver</button>
+        </a>
+    </div>
+{% endblock %}

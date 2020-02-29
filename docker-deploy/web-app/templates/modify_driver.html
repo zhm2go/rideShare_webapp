@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Modify driver information</li>
+    </ol>
+    <form method="post" enctype="multipart/form-data" novalidate action="{% url 'modify_driver' %}">
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+        <button type="submit" class="btn btn-primary">Modify</button>
+    </form>
+{% endblock %}

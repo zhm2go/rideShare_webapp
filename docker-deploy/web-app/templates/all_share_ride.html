@@ -1,0 +1,94 @@
+{#{% load static %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#    <link rel = "stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
+{#</head>#}
+{#<body>#}
+{#<h1>Ride Requested</h1>#}
+{#<div class="container">#}
+{#    <h3>All of your share other's rides</h3>#}
+{#    <table class="table">#}
+{#        <thead class="thead-light">#}
+{#            <tr>#}
+{#                <th>Destination</th>#}
+{#                <th>Earliest Time</th>#}
+{#                <th>Latest Time</th>#}
+{#                <th>Number of Passengers</th>#}
+{#                <th>Status</th>#}
+{#                <th>Operation</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            {% for ride in ride_list %}#}
+{#            <tr>#}
+{#                <td>{{ ride.destination }}</td>#}
+{#                <td>{{ ride.earliest }}</td>#}
+{#                <td>{{ ride.latest }}</td>#}
+{#                <td>{{ ride.numPassenger }}</td>#}
+{#                <td>#}
+{#                    {% if ride.ride %}#}
+{#                        Already join a ride.<br>#}
+{#                        <a href="{% url 'owner_details' ride.pk %}">Owner's ride details</a>#}
+{#                    {% else %}#}
+{#                        <a href="{% url 'search_ride' ride.pk %}">Search open rides</a>#}
+{#                    {% endif %}#}
+{#                </td>#}
+{#                <td>#}
+{#                    <a href="{% url 'modify_share' ride.pk %}">Modify this request</a><br>#}
+{#                    <a href="{% url 'delete_share' ride.pk %}">Delete this request</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#            {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#    <div class="row">#}
+{#        <div class="col">#}
+{#            <a href="{% url 'home' %}">Back to home</a>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+{% extends 'base.html' %}
+{% block content %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">All your shared other's ride</li>
+    </ol>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th class="text-center">Destination</th>
+                <th class="text-center">Earliest Time</th>
+                <th class="text-center">Latest Time</th>
+                <th class="text-center">Number of Passengers</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ride in ride_list %}
+            <tr>
+                <td class="text-center">{{ ride.destination }}</td>
+                <td class="text-center">{{ ride.earliest }}</td>
+                <td class="text-center">{{ ride.latest }}</td>
+                <td class="text-center">{{ ride.numPassenger }}</td>
+                <td class="text-center">
+                    {% if ride.ride %}
+                        Already join a ride.<br>
+                        <a href="{% url 'owner_details' ride.pk %}">Owner's ride details</a>
+                    {% else %}
+                        <a href="{% url 'search_ride' ride.pk %}">Search open rides</a>
+                    {% endif %}
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'modify_share' ride.pk %}"><i class="fa fa-edit"></i>Modify</a><br>
+                    <a href="{% url 'delete_share' ride.pk %}"style="color:red"><i class="fa fa-trash" style="color:red"></i>Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

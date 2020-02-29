@@ -1,0 +1,8 @@
+Django>3.0
+psycopg2
+django-mathfilters
+django-bootstrap3-datetimepicker-3
+django-bootstrap-datetimepicker
+django-datetimepicker
+django-widget-tweaks
+django-static-fontawesome
